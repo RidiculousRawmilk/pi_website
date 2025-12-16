@@ -1,0 +1,227 @@
+/* --- Globale Einstellungen --- */
+:root {
+    --bg-dark: #232325;     /* Der dunkle Hintergrund */
+    --bg-light: #FFF8EC;    /* Der beige Hintergrund unten */
+    --accent: #ff934b;      /* Das Orange für Logo und Linien */
+    --text-white: #ffffff;
+    --text-dark: #222222;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif; /* Für Nav und Fließtext */
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    overflow-x: hidden; /* Verhindert horizontales Scrollen */
+    height: 100vh;
+    position: relative;
+}
+
+/* --- Hintergrund Welle --- */
+.background-curve {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.background-curve svg {
+    width: 100%;
+    height: 100%;
+    /* Das SVG füllt den Screen, der Pfad definiert die beige Fläche unten */
+}
+
+/* --- Header & Navigation --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 60px;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+.logo {
+    font-family: 'Cormorant Garamond', serif; /* Die "ähnliche" Schrift */
+    font-weight: 700;
+    font-size: 3rem;
+    color: var(--accent);
+    letter-spacing: -1px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-white);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.btn-nav {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    padding: 12px 24px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    transition: transform 0.2s;
+}
+
+.btn-nav:hover {
+    transform: scale(1.05);
+}
+
+/* --- Hero Section --- */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
+    height: calc(100vh - 120px); /* Höhe minus Header */
+    position: relative;
+}
+
+/* Linker Textbereich */
+.hero-content {
+    width: 45%;
+    z-index: 5;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif; /* Kontrastreiche Serif für Headline */
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 40px;
+    max-width: 450px;
+    font-weight: 400;
+}
+
+.btn-hero {
+    display: inline-block;
+    padding: 15px 30px;
+
+    color: black;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background 0.3s;
+}
+
+.btn-hero:hover {
+    background-color: var(--accent);
+    color: var(--text-dark);
+}
+
+/* Rechter Bildbereich */
+.hero-visuals {
+    width: 55%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Der große Kreis mit Kuchen */
+.circle-container {
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--accent); /* Der orange Rand */
+    position: relative;
+    z-index: 2;
+    /* Schatten für Tiefe */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.main-cake {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Deko-Elemente (Blumen oben rechts) */
+.flower-bg {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 300px;
+    opacity: 0.6;
+    filter: blur(2px);
+    z-index: 0;
+    /* In echtem Projekt: mix-blend-mode nutzen oder PNG */
+    mask-image: linear-gradient(to bottom, black, transparent); 
+}
+
+/* Schwebende Croissants */
+/* HINWEIS: Hier brauchst du PNGs mit transparentem Hintergrund */
+.croissant {
+    position: absolute;
+    width: 220px;
+    z-index: 3;
+    filter: drop-shadow(5px 10px 10px rgba(0,0,0,0.2));
+}
+
+.croissant-left {
+    bottom: 50px;
+    left: 50px;
+    transform: rotate(-15deg);
+    /* Um das Bild rund zu machen falls kein PNG vorhanden: */
+    border-radius: 40% 60% 50% 50%; 
+}
+
+.croissant-right {
+    bottom: 0px;
+    right: 50px;
+    transform: rotate(10deg);
+    width: 180px;
+    /* Um das Bild rund zu machen falls kein PNG vorhanden: */
+    border-radius: 50%; 
+}
+
+/* Responsive Anpassung (Optional für Mobile) */
+@media (max-width: 1024px) {
+    .hero {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .hero-content {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    .hero-content p {
+        margin: 0 auto 30px auto;
+    }
+
+    .background-curve svg {
+        transform: scaleY(0.5);
+        transform-origin: bottom;
+    }
+}
