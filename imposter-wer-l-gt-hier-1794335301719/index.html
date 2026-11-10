@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imposter - Das Detektivspiel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>IMPOSTER</h1>
+            <p class="subtitle">Finde heraus, wer von euch das Geheimnis nicht kennt!</p>
+        </header>
+
+        <!-- Setup Screen -->
+        <div id="setup-screen" class="card">
+            <h2>Spiel vorbereiten</h2>
+            <div class="input-group">
+                <label for="player-count">Anzahl Spieler: <span id="player-count-val">4</span></label>
+                <input type="range" id="player-count" min="3" max="10" value="4">
+            </div>
+            <div class="input-group">
+                <label for="imposter-count">Anzahl Imposter:</label>
+                <select id="imposter-count">
+                    <option value="1">1 Imposter</option>
+                    <option value="2">2 Imposter</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="category">Kategorie:</label>
+                <select id="category">
+                    <option value="all">Mischmasch (Alles)</option>
+                    <option value="food">Essen & Trinken</option>
+                    <option value="places">Orte & Länder</option>
+                    <option value="objects">Alltagsgegenstände</option>
+                </select>
+            </div>
+            <button id="start-btn" class="btn primary">Spiel starten</button>
+        </div>
+
+        <!-- Pass the Phone Screen -->
+        <div id="pass-screen" class="card hidden">
+            <h2>Gib das Gerät an</h2>
+            <h3 id="current-player-name">Spieler 1</h3>
+            <p>Klicke, um deine geheime Rolle zu sehen.</p>
+            <button id="reveal-btn" class="btn secondary">Rolle anzeigen</button>
+        </div>
+
+        <!-- Role Reveal Screen -->
+        <div id="role-screen" class="card hidden">
+            <h2>Deine Rolle</h2>
+            <div id="role-display" class="role-box">
+                <!-- Inhalt wird per JS gefüllt -->
+            </div>
+            <p class="warning">Merke dir das Wort/die Rolle und gib das Gerät weiter!</p>
+            <button id="next-btn" class="btn primary">Verstanden / Nächster</button>
+        </div>
+
+        <!-- Game / Discussion Screen -->
+        <div id="game-screen" class="card hidden">
+            <h2>Die Diskussion läuft!</h2>
+            <p>Stellt reihum Fragen zum geheimen Begriff. Findet den Imposter!</p>
+            <div class="timer-box">
+                <span id="timer">03:00</span>
+            </div>
+            <div class="timer-controls">
+                <button id="timer-start" class="btn small">Start</button>
+                <button id="timer-pause" class="btn small">Pause</button>
+                <button id="timer-reset" class="btn small">Reset</button>
+            </div>
+            <button id="end-game-btn" class="btn danger">Imposter aufdecken</button>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
